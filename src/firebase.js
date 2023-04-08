@@ -5,15 +5,14 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const app = firebase.initializeApp({
-  apiKey: "AIzaSyBi1Jp5olRTYeNuRQY_EPGNLuW4pIMUJaA",
-  authDomain: "furniturear-eec82.firebaseapp.com",
-  databaseURL:
-    "https://furniturear-eec82-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "furniturear-eec82",
-  storageBucket: "furniturear-eec82.appspot.com",
-  messagingSenderId: "328730245292",
-  appId: "1:328730245292:web:5d8e433c2cefb8cf9b4709",
-  measurementId: "G-035WMRDPYE",
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  databaseURL: import.meta.env.VITE_DATABASE_URL,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 });
 
 export const db = getFirestore(app);
