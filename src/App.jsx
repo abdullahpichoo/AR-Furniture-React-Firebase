@@ -1,34 +1,46 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import bootstrap from "bootstrap";
+// import "./App.css";
+import Login from "./pages/registration/Login";
+import Signup from "./pages/registration/Signup";
+import Home from "./pages/home/Home";
+import { Assets } from "./pages/assets/Assets";
+import { Navbar } from "./components/Navbar";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  Navigate,
+} from "react-router-dom";
+
+import "./firebase.js";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const currentUser = false;
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/login" />;
+  };
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="">
+      <Router>
+        <Navbar />
+        <div className="container mt-5">
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/assets"
+              element={
+                <RequireAuth>
+                  <Assets />
+                </RequireAuth>
+              }
+            />
+          </Routes>
+        </div>
+      </Router>
     </div>
   );
 }
