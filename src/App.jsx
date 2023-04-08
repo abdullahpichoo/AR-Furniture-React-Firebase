@@ -22,7 +22,7 @@ function App() {
   };
 
   return (
-    <div className="">
+    <div className="app">
       <Router>
         <Navbar />
         <div className="container mt-5">
@@ -30,14 +30,7 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route
-              path="/assets"
-              element={
-                <RequireAuth>
-                  <Assets />
-                </RequireAuth>
-              }
-            />
+            <Route path="/assets" element={<Assets />} />
           </Routes>
         </div>
       </Router>

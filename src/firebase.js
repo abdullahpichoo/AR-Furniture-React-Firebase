@@ -2,7 +2,7 @@ import * as firebase from "firebase/app";
 import "firebase/firestore";
 import "firebase/auth";
 
-firebase.initializeApp({
+const app = firebase.initializeApp({
   apiKey: "AIzaSyBi1Jp5olRTYeNuRQY_EPGNLuW4pIMUJaA",
   authDomain: "furniturear-eec82.firebaseapp.com",
   databaseURL:
@@ -13,3 +13,4 @@ firebase.initializeApp({
   appId: "1:328730245292:web:5d8e433c2cefb8cf9b4709",
   measurementId: "G-035WMRDPYE",
 });
+export default app;
