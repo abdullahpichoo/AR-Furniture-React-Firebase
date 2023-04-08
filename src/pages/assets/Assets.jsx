@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
 // import { useSelector } from "react-redux";
 import { getAuth } from "firebase/auth";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthContext";
 import { useContext } from "react";
-import app from "../../firebase";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 export const Assets = () => {
   //   const user = useSelector(() => state.user);
@@ -15,12 +16,35 @@ export const Assets = () => {
 
   const auth = getAuth();
 
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      let dataList = [];
+      try {
+        const querySnapshot = await getDocs(collection(db, "assets"));
+        querySnapshot.forEach((doc) => {
+          dataList.push(doc);
+          console.log(doc.id, " => ", doc.data());
+        });
+        setData(list);
+      } catch (err) {
+        console.log(err);
+      }
+      fetchData();
+    };
+  }, []);
+
+  console.log(data);
+
   return (
     <>
       <h1>This is the Assets index page!</h1>
       {!!user ? (
         <>
           <p>User is Logged in as {user.email}</p>
+          <Link to="/assets/new" className="btn btn-primary">
+            Add New Asset
+          </Link>
           <button
             className="btn btn-primary"
             onClick={() => {

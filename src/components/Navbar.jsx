@@ -39,7 +39,11 @@ export const Navbar = () => {
                   className="nav-link"
                   onClick={() => {
                     auth.signOut();
-                    navigate("/login");
+                    {
+                      setTimeout(() => {
+                        navigate("/login", { replace: true });
+                      }, 50);
+                    }
                   }}
                 >
                   Sign Out
