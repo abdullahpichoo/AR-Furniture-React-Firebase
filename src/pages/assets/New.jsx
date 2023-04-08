@@ -6,8 +6,10 @@ import { collection, addDoc } from "firebase/firestore";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { AuthContext } from "../../AuthContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const New = () => {
+  const navigate = useNavigate();
   // Getting the Logged In User Context
   const { user } = useContext(AuthContext);
 
@@ -18,6 +20,7 @@ export const New = () => {
   const [file, setFile] = useState("");
   const [filePath, setFilePath] = useState("");
   const [perc, setPerc] = useState(null);
+  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     const uploadFile = () => {
@@ -66,9 +69,10 @@ export const New = () => {
         description,
         price,
       });
+      setMsg("Asset added successfully! Redirecting...");
       setTimeout(() => {
         navigate("/assets", { replace: true });
-      }, 50);
+      }, 2000);
       console.log(res);
     } catch (err) {
       setError(err);
@@ -158,6 +162,20 @@ export const New = () => {
             </>
           )}
         </form>
+        {msg && (
+          <div
+            className="alert alert-success alert-dismissible fade show"
+            role="alert"
+          >
+            <strong>{msg}</strong>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="alert"
+              aria-label="Close"
+            ></button>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -17,11 +17,6 @@ import {
 import "./firebase.js";
 
 function App() {
-  const currentUser = false;
-  const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/login" />;
-  };
-
   return (
     <div className="app">
       <Router>
@@ -29,10 +24,10 @@ function App() {
         <div className="container mt-5">
           <Routes>
             <Route path="/home" element={<Home />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
             <Route path="/assets" element={<Assets />} />
             <Route path="/assets/new" element={<New />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
           </Routes>
         </div>
       </Router>
