@@ -23,6 +23,7 @@ function App() {
         <Navbar />
         <div className="container mt-5">
           <Routes>
+            <Route index element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/assets" element={<Assets />} />
             <Route path="/assets/new" element={<New />} />
