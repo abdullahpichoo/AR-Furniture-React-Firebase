@@ -19,11 +19,9 @@ export const Signup = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log("User Signed Up As: ", user);
         navigate("/assets");
       })
       .catch((error) => {
-        console.log(error);
         setError(true);
       });
   };

@@ -31,17 +31,12 @@ export const List = () => {
         const querySnapshot = await getDocs(q);
         querySnapshot.forEach((doc) => {
           dataList.push({ id: doc.id, ...doc.data() });
-          console.log(doc.id, " => ", doc.data());
         });
         setData(dataList);
-      } catch (e) {
-        console.log("Error", e);
-      }
+      } catch (e) {}
     };
     fetchData();
   }, []);
-
-  console.log(data);
 
   async function handleDelete(id) {
     try {
@@ -51,7 +46,6 @@ export const List = () => {
       setError(err);
     }
 
-    console.log("Deleted Item: " + id);
     setData(data.filter((item) => item.id !== id));
   }
   const handleEdit = () => {};

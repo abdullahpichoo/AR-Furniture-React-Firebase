@@ -19,8 +19,6 @@ export const Assets = () => {
 
   const auth = getAuth();
 
-  // console.log(data);
-
   return (
     <div className="card">
       <h1 className="card-header">Your Assets</h1>
