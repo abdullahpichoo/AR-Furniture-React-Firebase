@@ -35,10 +35,10 @@ export const Login = () => {
           <h1 className="card-header text-center fw-bold mb-3">Login</h1>
           {error && (
             <div
-              className="alert alert-danger alert-dismissible fade show"
+              className="ms-3 me-3 alert alert-danger alert-dismissible fade show"
               role="alert"
             >
-              <strong>Incorrect Email or Password!</strong>
+              <strong>Invalid email or password!</strong>
               <button
                 type="button"
                 className="btn-close"

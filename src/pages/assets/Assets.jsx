@@ -20,27 +20,29 @@ export const Assets = () => {
   const auth = getAuth();
 
   return (
-    <div className="card">
-      <h1 className="card-header">Your Assets</h1>
-      <div className="card-body">
-        {!!user ? (
-          <>
-            <p>Logged In As: {user.email}</p>
-            <List />
-            <div className="d-flex gap-3">
-              <Link to="/assets/new" className="btn btn-primary">
-                Add New Asset
-              </Link>
-            </div>
-          </>
-        ) : (
-          <>
-            {setTimeout(() => {
-              navigate("/login", { replace: true });
-            }, 50)}
-          </>
-        )}
+    <>
+      <div className="card">
+        <h1 className="card-header">Your Assets</h1>
+        <div className="card-body">
+          {!!user ? (
+            <>
+              <p>Logged In As: {user.email}</p>
+              <List />
+              <div className="d-flex gap-3">
+                <Link to="/assets/new" className="btn btn-primary">
+                  Add New Asset
+                </Link>
+              </div>
+            </>
+          ) : (
+            <>
+              {setTimeout(() => {
+                navigate("/login", { replace: true });
+              }, 50)}
+            </>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
