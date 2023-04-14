@@ -23,10 +23,6 @@ export const List = () => {
   let dataList = [];
   useEffect(() => {
     const fetchData = async () => {
-      const q = query(
-        collection(db, "assets"),
-        where("user", "==", user.email)
-      );
       try {
         const querySnapshot = await getDocs(collection(db, "assets"));
         querySnapshot.forEach((doc) => {
@@ -36,7 +32,6 @@ export const List = () => {
       } catch (e) {}
     };
     fetchData();
-    console.log("user: ", user.email);
   }, []);
 
   async function handleDelete(id) {
@@ -46,7 +41,6 @@ export const List = () => {
     } catch (err) {
       setError(err);
     }
-
     setData(data.filter((item) => item.id !== id));
   }
 
@@ -69,7 +63,7 @@ export const List = () => {
                 return (
                   <tr key={id}>
                     <td>{item.name}</td>
-                    <td>{item.description}</td>
+                    <td className="mw-25 col-md-6">{item.description}</td>
                     <td>{item.price}</td>
                     <td>{item.user}</td>
                     {item.user === user.email && (
